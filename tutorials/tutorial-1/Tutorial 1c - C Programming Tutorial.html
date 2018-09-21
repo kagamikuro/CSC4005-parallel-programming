@@ -1,0 +1,1473 @@
+
+<!-- saved from url=(0126)http://webcache.googleusercontent.com/search?q=cache:https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<base href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html">--><base href="."><style type="text/css">body { margin-left:0;margin-right:0;margin-top:0; }#google-cache-hdr {background:#f5f5f5 !important;font:13px arial,sans-serif !important;text-align:left !important;color:#202020 !important;border:0 !important;margin:0 !important;border-bottom:1px solid #cecece !important;line-height:16px !important ;padding:16px 28px 24px 28px !important;}#google-cache-hdr * {display:inline !important;font:inherit !important;text-align:inherit !important;color:inherit !important;line-height:inherit !important;background:none !important;border:0 !important;margin:0 !important;padding:0 !important;letter-spacing:0 !important;}#google-cache-hdr a {text-decoration:none !important;color:#1a0dab !important;}#google-cache-hdr a:hover { text-decoration:underline !important; }#google-cache-hdr a:visited { color:#609 !important; }#google-cache-hdr div { display:block !important;margin-top:4px !important; }#google-cache-hdr b {font-weight:bold !important;display:inline-block !important;direction:ltr !important;}</style><title>Tutorial 1c - C Programming Tutorial</title></head><body bgcolor="#ffffee"><div id="google-cache-hdr" dir="ltr"><div>This is Google's cache of <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html" dir="ltr">https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html</a>. It is a snapshot of the page as it appeared on 14 Sep 2017 18:10:03 GMT. </div><div>The <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html" dir="ltr">current page</a> could have changed in the meantime. <a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;p=cached&amp;answer=1687222">Learn more</a></div><div></div><div><span style="display:inline-block !important;margin-top:8px !important;margin-right:104px !important;white-space:nowrap !important;"><span style="margin-right:28px !important;"><span style="font-weight:bold !important;">Full version</span></span><span style="margin-right:28px !important;"><a href="http://webcache.googleusercontent.com/search?q=cache:https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html&amp;num=1&amp;strip=1&amp;vwsrc=0">Text-only version</a></span><span style="margin-right:28px !important;"><a href="http://webcache.googleusercontent.com/search?q=cache:https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html&amp;num=1&amp;strip=0&amp;vwsrc=1">View source</a></span></span><span style="display:inline-block !important;margin-top:8px !important;color:#717171 !important;">Tip: To quickly find your search term on this page, press <b>Ctrl+F</b> or <b>⌘-F</b> (Mac) and use the find bar.</span></div></div><div style="position:relative;">
+
+
+<title></title>
+
+
+
+
+<center><h2> C Language Tutorial </h2></center>
+
+<p>
+<b>Table of Contents:</b>
+</p><ul>
+<li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#first">1. A First Program</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#compute">2. Let's Compute</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#loops">3. Loops</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#symbolic">4. Symbolic Constants</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#conditionals">5. Conditionals</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#pointers">6. Pointers</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#arrays">7. Arrays</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#character">8. Character Arrays</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#io">9. I/O Capabilities</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#functions">10. Functions</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#command-line">11. Command-line Arguments</a>
+</li><li> <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/c_tutorial.html#dialog-box">12. Graphical Interfaces: Dialog Boxes</a>
+</li></ul>
+<hr>
+
+<p> This section contains a brief introduction to the C language.  It
+is intended as a tutorial on the language, and aims at getting a
+reader new to C started as quickly as possible.  It is certainly
+<em>not</em> intended as a substitute for any of the numerous
+textbooks on C.</p><p>
+
+The best way to learn a new ``human'' language is to speak it right
+from the outset, listening and repeating, leaving the intricacies of
+the grammar for later.  The same applies to computer languages--to
+learn C, we must start writing C programs as quickly as possible.
+
+</p><p>
+An excellent textbook on C by two well-known and widely respected
+authors is:
+</p><pre><b> The C Programming Language -- ANSI C </b>
+<i> Brian W. C. Kernighan &amp; Dennis M. Ritchie </i>
+<i> Prentice Hall, 1988 </i>
+</pre>
+
+Dennis Ritchie designed and implemented the first C compiler on a
+PDP-11 (a prehistoric machine by today's standards, yet one which had
+enormous influence on modern scientific computation). The C language
+was based on two (now defunct) languages: BCPL, written by Martin
+Richards, and B, written by Ken Thompson in 1970 for the first UNIX
+system on a PDP-7.  The original ``official'' C language was the ``K
+&amp; R'' C, the nickname coming from the names of the two authors of
+the original ``The C Programming Language''.  In 1988, the American
+National Standards Institute (ANSI) adopted a ``new and improved''
+version of C, known today as ``ANSI C''. This is the version described
+in the current edition of ``The C Programming Language -- ANSI
+C''. The ANSI version contains many revisions to the syntax and the
+internal workings of the language, the major ones being improved
+calling syntax for procedures and standarization of most (but,
+unfortunately, not quite all!) system libraries.
+
+<p><br>
+
+</p><h2>  <a name="first">1. A First Program </a> </h2>
+
+Let's be polite and start by saluting the world!  Type the following
+program into your favorite <a href="https://www.physics.drexel.edu/~valliere/General/UNIX/editors.html">editor</a>:
+
+<pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    printf("\nHello World\n");
+}
+<hr>
+</pre>
+
+Save the code in the file <kbd>hello.c</kbd>, then <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/compile.html">compile</a> it by typing:
+
+<pre>	gcc hello.c
+</pre>
+
+<p> This creates an <i>executable</i> file <kbd>a.out</kbd>, which is
+then executed simply by typing its name. The result is that the
+characters `` <kbd>Hello World</kbd>'' are printed out, preceded by
+an empty line.
+
+</p><p> A C program contains <i>functions</i> and <i>variables</i>.  The
+functions specify the tasks to be performed by the program. The
+``main'' function establishes the overall logic of the code. It is
+normally kept short and calls different functions to perform the
+necessary sub-tasks.  All C codes must have a ``main'' function.
+
+</p><p> Our <kbd>hello.c</kbd> code calls <kbd>printf</kbd>, an output
+function from the I/O (input/output) library (defined in the file
+<kbd>stdio.h</kbd>). The original C language did not have any built-in
+I/O statements whatsoever.  Nor did it have much arithmetic
+functionality.  The original language was really not intended for
+''scientific'' or ''technical'' computation..  These functions are now
+performed by standard libraries, which are now part of ANSI C. The K
+&amp; R textbook lists the content of these and other standard
+libraries in an appendix.
+
+</p><p> The <kbd>printf</kbd> line prints the message ``<kbd>Hello
+World</kbd>'' on ``<kbd>stdout</kbd>'' (the output stream
+corresponding to the X-terminal window in which you run the code);
+``<kbd>\n</kbd>'' prints a ``new line'' character, which brings the
+cursor onto the next line.  By construction, <kbd>printf</kbd> never
+inserts this character on its own: the following program would produce
+the same result:
+
+</p><pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    printf("\n");
+    printf("Hello World");
+    printf("\n");
+}
+<hr>
+</pre>
+
+Try leaving out the ``<kbd>\n</kbd>'' lines and see what happens.
+
+<p> The first statement ``<kbd>#include &lt; stdio.h&gt;</kbd>'' includes
+a specification of the C I/O library.  All variables in C must be
+explicitly defined before use: the ``<kbd>.h</kbd>'' files are by
+convention ``header files'' which contain definitions of variables and
+functions necessary for the functioning of a program, whether it be in
+a user-written section of code, or as part of the standard C libaries.
+The directive ``<kbd>#include</kbd>'' tells the C compiler to insert
+the contents of the specified file at that point in the code. The
+``<kbd>&lt; ...&gt;</kbd>'' notation instructs the compiler to look for
+the file in certain ``standard'' system directories.
+
+</p><p> The <kbd>void</kbd> preceeding ``<kbd>main</kbd>'' indicates that
+main is of ``void'' type--that is, it has <em>no</em> type associated
+with it, meaning that it cannot return a result on execution.
+
+</p><p> The ``;'' denotes the end of a statement. Blocks of statements are
+put in braces {...}, as in the definition of functions.  All C
+statements are defined in free format, i.e., with no specified layout
+or column assignment. Whitespace (tabs or spaces) is never
+significant, except inside quotes as part of a character string. The
+following program would produce exactly the same result as our earlier
+example:
+
+</p><pre>#include &lt; stdio.h&gt;
+void main(){printf("\nHello World\n");}
+</pre>
+
+<p> The reasons for arranging your programs in lines and indenting to
+show structure should be obvious!
+
+</p><p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="compute">2. Let's Compute </a> </h2>
+
+The following program, <kbd>sine.c</kbd>, computes a table of the sine
+function for angles between 0 and 360 degrees.
+
+
+<pre><hr>
+				/************************/
+				/*   Table of 		*/	
+				/*   Sine Function	*/
+				/************************/
+				
+				/* Michel Vallieres 	*/
+				/* Written: Winter 1995	*/
+#include &lt; stdio.h&gt;
+#include &lt; math.h&gt;
+
+void main()
+{
+    int    angle_degree;
+    double angle_radian, pi, value;
+
+					/* Print a header */
+    printf ("\nCompute a table of the sine function\n\n");
+
+					/* obtain pi once for all */
+					/* or just use pi = M_PI, where
+					   M_PI is defined in math.h 	*/
+    pi = 4.0*atan(1.0);
+    printf ( " Value of PI = %f \n\n", pi );
+
+    printf ( " angle     Sine \n" );
+
+    angle_degree=0;			/* initial angle value 		 */
+					/* scan over angle 		 */
+
+    while (  angle_degree &lt;= 360 )	/* loop until angle_degree &gt; 360 */
+    {
+       angle_radian = pi * angle_degree/180.0 ;
+       value = sin(angle_radian);
+       printf ( " %3d      %f \n ", angle_degree, value );
+
+       angle_degree = angle_degree + 10; /* increment the loop index	 */
+    }
+}
+<hr>
+</pre>
+
+The code starts with a series of comments indicating its the purpose,
+as well as its author. It is considered good programming style to
+identify and document your work (although, sadly, most people only do
+this as an afterthought).  Comments can be written anywhere in the
+code: any characters between /* and */ are ignored by the compiler and
+can be used to make the code easier to understand.  The use of
+variable names that are meaningful within the context of the problem
+is also a good idea.
+
+<p> The <kbd>#include</kbd> statements now also include the header
+file for the standard mathematics library <kbd>math.h</kbd>. This
+statement is needed to define the calls to the trigonometric functions
+<kbd>atan</kbd> and <kbd>sin</kbd>.  Note also that the <a href="https://www.physics.drexel.edu/~valliere/General/C_basics/compile.html">compilation</a> must include the mathematics
+library explicitly by typing
+
+</p><p>
+</p><pre>	gcc sine.c -lm
+</pre>
+
+<p> Variable names are arbitrary (with some compiler-defined maximum
+length, typically 32 characters). C uses the following standard
+variable types:
+
+</p><pre>int    -&gt; integer variable
+short  -&gt; short integer
+long   -&gt; long integer
+float  -&gt; single precision real (floating point) variable
+double -&gt; double precision real (floating point) variable
+char   -&gt; character variable (single byte)
+</pre>
+
+The compilers checks for consistency in the types of all variables
+used in any code.  This feature is intended to prevent mistakes, in
+particular in mistyping variable names.  Calculations done in the math
+library routines are usually done in double precision arithmetic (64
+bits on most workstations).  The actual number of bytes used in the
+internal storage of these data types depends on the machine being
+used.
+
+<p> The <kbd>printf</kbd> function can be instructed to print integers,
+floats and strings properly. The general syntax is
+
+</p><pre>	printf( "format", variables );
+</pre>
+
+where <kbd>"format"</kbd> specifies the converstion specification and
+<kbd>variables</kbd> is a list of quantities to print.  Some useful
+formats are
+
+<pre>%.nd	integer (optional n = number of columns; if 0, pad with zeroes)
+%m.nf	float or double (optional m = number of columns,
+			 	  n = number of decimal places)
+%ns	string (optional n = number of columns)
+%c    	character
+\n \t 	to introduce new line or tab
+\g	ring the bell (``beep'') on the terminal
+</pre>
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="loops">3. Loops </a></h2>
+
+Most real programs contain some construct that loops within the
+program, performing repetitive actions on a stream of data or a region
+of memory.  There are several ways to loop in C. Two of the most
+common are the <kbd>while</kbd> loop:
+
+<pre>    while (expression)
+    {
+	...block of statements to execute...
+    }
+</pre>
+
+and the <kbd>for</kbd> loop:
+
+<pre>    for (expression_1; expression_2; expression_3)
+    {
+	...block of statements to execute...
+    }
+</pre>
+
+
+The <kbd>while</kbd> loop continues to loop until the conditional
+<kbd>expression</kbd> becomes false. The condition is tested upon
+entering the loop. Any logical construction (see below for a list) can
+be used in this context.
+
+<p> The <kbd>for</kbd> loop is a special case, and is equivalent to
+the following while loop:
+
+</p><pre>    expression_1;
+
+    while (expression_2)
+    {
+	...block of statements...
+
+	expression_3;
+    }
+</pre>
+
+For instance, the following structure is often encountered:
+
+<pre>    i = initial_i;
+
+    while (i &lt;= i_max)
+    {
+     	...block of statements...
+
+	i = i + i_increment;
+    }
+</pre>
+
+This structure may be rewritten in the easier syntax of the
+<kbd>for</kbd> loop as:
+
+<pre>    for (i = initial_i; i &lt;= i_max; i = i + i_increment)
+    {
+	...block of statements...
+    }
+</pre>
+
+Infinite loops are possible (e.g. <kbd>for(;;)</kbd>), but not too
+good for your computer budget!  C permits you to write an infinite
+loop, and provides the <kbd>break</kbd> statement to ``breakout '' of
+the loop.  For example, consider the following (admittedly
+not-so-clean) re-write of the previous loop:
+
+<pre>    angle_degree = 0;
+
+    for ( ; ; )
+    {
+	...block of statements...
+
+	angle_degree = angle_degree + 10;
+	if (angle_degree == 360) break;
+    }
+</pre>
+
+The conditional <kbd>if</kbd> simply asks whether
+<kbd>angle_degree</kbd> is equal to 360 or not; if yes, the loop is
+stopped.
+
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="symbolic">4. Symbolic Constants </a></h2>
+
+You can define constants of any type by using the <kbd>#define</kbd>
+compiler directive. Its syntax is simple--for instance
+
+<pre>#define ANGLE_MIN 0
+#define ANGLE_MAX 360
+</pre>
+
+would define <kbd>ANGLE_MIN</kbd> and <kbd>ANGLE_MAX</kbd> to the
+values 0 and 360, respectively. C distinguishes between lowercase and
+uppercase letters in variable names. It is customary to use capital
+letters in defining global constants.
+
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="conditionals">5. Conditionals </a></h2>
+
+Conditionals are used within the <kbd>if</kbd> and <kbd>while</kbd>
+constructs:
+
+<pre>    if (conditional_1) 
+    {
+	...block of statements executed if conditional_1 is true...
+    }
+    else if (conditional_2)
+    {
+	...block of statements executed if conditional_2 is true...
+    }
+    else
+    {
+	...block of statements executed otherwise...
+    }
+</pre>
+
+and any variant that derives from it, either by omitting branches or
+by including nested conditionals.
+
+<p> Conditionals are logical operations involving comparison of
+quantities (of the same type) using the conditional operators:
+
+</p><pre>	&lt;		smaller than
+ 	&lt;=		smaller than or equal to
+	==		equal to
+	!=		not equal to
+	&gt;=		greater than or equal to
+	&gt;		greater than
+</pre>
+
+and the boolean operators
+
+<pre>	&amp;&amp; 		and
+	||		or
+	!		not
+</pre>
+
+<p>
+Another conditional use is in the <kbd>switch</kbd> construct:
+
+</p><pre>    switch (expression)
+    {
+	case const_expression_1:
+	{
+	    ...block of statements...
+            break;
+	}
+	case const_expression_2:
+	{
+	    ...block of statements...
+            break;
+	}
+	default:
+	{
+	    ...block of statements..
+	}
+    }
+</pre>
+
+The appropriate block of statements is executed according to the value
+of the expression, compared with the constant expressions in the case
+statement. The <kbd>break</kbd> statements insure that 
+the statements in the cases following the chosen one
+will not be executed. If you would want to execute these
+statements, then you would leave out the <kbd> break </kbd>
+statements.
+This construct is particularly useful in handling input
+variables.
+
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="pointers">6. Pointers </a></h2>
+
+The C language allows the programmer to ``peek and poke'' directly
+into memory locations.  This gives great flexibility and power to the
+language, but it also one of the great hurdles that the beginner must
+overcome in using the language.
+
+<p>
+All variables in a program reside in memory; the statements
+
+</p><pre>    float x;
+    x = 6.5;
+</pre>
+
+request that the compiler reserve 4 bytes of memory (on a 32-bit
+computer) for the floating-point variable <kbd>x</kbd>, then put the
+``value'' 6.5 in it.
+
+<p> Sometimes we want to know where a variable resides in memory. The
+address (location in memory) of any variable is obtained by placing
+the operator ``<kbd>&amp;</kbd>'' before its name. Therefore
+<kbd>&amp;x</kbd> is the address of <kbd>x</kbd>.  C allows us to go
+one stage further and define a variable, called a <em>pointer</em>,
+that contains the address of (i.e. ``points to'') other variables.
+For example:
+
+</p><pre>    float x;
+    float* px;
+
+    x = 6.5;
+    px = &amp;x;
+</pre>
+
+defines <kbd>px</kbd> to be a pointer to objects of type float, and
+sets it equal to the address of <kbd>x</kbd>:
+
+<p> 
+</p><center>
+<img src="https://www.physics.drexel.edu/~valliere/General/C_basics/pointer-1.gif"> <br>
+Pointer use for a variable 
+</center>
+ 
+<p>The content of the memory location referenced by a pointer is
+obtained using the ``<kbd>*</kbd>'' operator (this is called
+<em>dereferencing</em> the pointer).  Thus, <kbd>*px</kbd> refers to
+the value of <kbd>x</kbd>.
+
+</p><p>C allows us to perform arithmetic operations using pointers, but
+beware that the ``unit'' in pointer arithmetic is the size (in bytes)
+of the object to which the pointer points.  For example, if
+<kbd>px</kbd> is a pointer to a variable <kbd>x</kbd> of type
+<kbd>float</kbd>, then the expression <kbd>px + 1</kbd> refers not to
+the next bit or byte in memory but to the location of the next
+<kbd>float</kbd> after <kbd>x</kbd> (4 bytes away on most
+workstations); if <kbd>x</kbd> were of type <kbd>double</kbd>, then
+<kbd>px + 1</kbd> would refer to a location 8 bytes (the size of a
+<kbd>double</kbd>)away, and so on.  Only if <kbd>x</kbd> is of type
+<kbd>char</kbd> will <kbd>px + 1</kbd> actually refer to the next byte
+in memory.
+
+</p><p>Thus, in
+
+</p><pre>    char* pc;
+    float* px;
+    float x;
+
+    x = 6.5;
+    px = &amp;x;
+    pc = (char*) px;
+</pre>
+
+(the <kbd>(char*)</kbd> in the last line is a ``cast'', which converts
+one data type to another), <kbd>px</kbd> and <kbd>pc</kbd> both point
+to the same location in memory--the address of <kbd>x</kbd>--but
+<kbd>px + 1</kbd> and <kbd>pc + 1</kbd> point to <em>different</em>
+memory locations.
+
+<p>Consider the following simple code.
+
+</p><pre><hr>
+void main()
+{
+    float x, y;				/* x and y are of float type	     */
+    float *fp, *fp2;			/* fp and fp2 are pointers to float  */
+
+    x = 6.5;				/* x now contains the value 6.5	     */
+
+					/* print contents and address of x   */
+    printf("Value of x is %f, address of x %ld\n", x, &amp;x);
+	
+    fp = &amp;x;				/* fp now points to location of x    */
+		
+					/* print the contents of fp	     */
+    printf("Value in memory location fp is %f\n", *fp);
+
+					/* change content of memory location */
+    *fp = 9.2;
+    printf("New value of x is %f = %f \n", *fp, x);
+
+					/* perform arithmetic 	             */
+    *fp = *fp + 1.5;
+    printf("Final value of x is %f = %f \n", *fp, x);
+
+					/* transfer values                   */
+    y = *fp;
+    fp2 = fp;
+    printf("Transfered value into y = %f and fp2 = %f \n", y, *fp2);
+}
+<hr>
+</pre>
+
+Run this code to see the results of these different operations.  Note
+that, while the value of a pointer (if you print it out with
+<kbd>printf</kbd>) is typically a large integer, denoting some
+particular memory location in the computer, pointers are <em>not</em>
+integers--they are a completely different data type.
+
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="arrays">7. Arrays </a></h2>
+
+Arrays of any type can be formed in C. The syntax is simple:
+
+<pre>	type name[dim];
+</pre>
+
+In C, arrays starts at position 0. The elements of the array occupy
+adjacent locations in memory.  C treats the name of the array as if it
+were a pointer to the first element--this is important in
+understanding how to do arithmetic with arrays.  Thus, if <kbd>v</kbd>
+is an array, <kbd>*v</kbd> is the same thing as <kbd>v[0]</kbd>,
+<kbd>*(v+1)</kbd> is the same thing as <kbd>v[1]</kbd>, and so on:
+
+<p>
+</p><center>
+<img src="https://www.physics.drexel.edu/~valliere/General/C_basics/pointer-2.gif"> <br>
+Pointer use for an array
+</center>
+
+<p> Consider the following code, which illustrates the use of
+pointers:
+
+</p><pre><hr>
+#define SIZE 3
+
+void main()
+{
+    float x[SIZE];
+    float *fp;
+    int   i;
+					/* initialize the array x         */
+					/* use a "cast" to force i        */
+					/* into the equivalent float      */
+    for (i = 0; i &lt; SIZE; i++)
+	x[i] = 0.5*(float)i;
+					/* print x                        */
+    for (i = 0; i &lt; SIZE; i++)
+	printf("  %d  %f \n", i, x[i]);
+					/* make fp point to array x       */
+    fp = x;
+					/* print via pointer arithmetic   */
+					/* members of x are adjacent to   */
+					/* each other in memory	          */
+					/* *(fp+i) refers to content of	  */
+					/* memory location (fp+i) or x[i] */
+    for (i = 0; i &lt; SIZE; i++)
+	printf("  %d  %f \n", i, *(fp+i));
+}
+<hr>
+</pre>
+
+(The expression ``<kbd>i++</kbd>'' is C shorthand for ``<kbd>i = i +
+1</kbd>''.)  Since <kbd>x[i]</kbd> means the <kbd>i</kbd>-th element
+of the array <kbd>x</kbd>, and <kbd>fp = x</kbd> points to the start
+of the <kbd>x</kbd> array, then <kbd>*(fp+i)</kbd> is the content of
+the memory address <kbd>i</kbd> locations beyond <kbd>fp</kbd>, that
+is, <kbd>x[i]</kbd>.
+
+ 
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="character">8. Character Arrays </a></h2>
+ 
+A <i> string constant </i>, such as 
+
+<pre>	"I am a string"
+</pre>
+
+is an array of characters. It is represented internally in C by the
+ASCII characters in the string, i.e., ``<kbd>I</kbd>'', blank,
+``<kbd>a</kbd>'', ``<kbd>m</kbd>'',... for the above string, and
+terminated by the special null character ``<kbd>\0</kbd>'' so programs
+can find the end of the string.
+ 
+<p>
+String constants are often used in making the output
+of code intelligible using <kbd> printf </kbd>;
+</p><pre>	printf("Hello, world\n");
+	printf("The value of a is: %f\n", a);
+</pre>
+ 
+<p> String constants can be associated with variables. C provides the
+<kbd>char</kbd> type variable, which can contain one character--1
+byte--at a time. A character string is stored in an array of character
+type, one ASCII character per location. Never forget that, since
+strings are conventionally terminated by the null character ``\0'', we
+require <i>one extra storage location</i> in the array!
+ 
+</p><p> C does not provide any operator which manipulate entire strings at
+once. Strings are manipulated either via pointers or via special
+routines available from the standard <i>string</i> library
+<kbd>string.h</kbd>. Using character pointers is relatively easy since
+the name of an array is a just a pointer to its first element.
+Consider the following code:
+
+</p><pre><hr>
+void main()
+{
+     char text_1[100], text_2[100], text_3[100];
+     char *ta, *tb;
+     int i;
+                                      /* set message to be an arrray  */
+                                      /* of characters; initialize it */
+                                      /* to the constant string "..." */
+                                      /* let the compiler decide on   */
+                                      /* its size by using []         */
+     char message[] = "Hello, I am a string; what are you?";
+ 
+     printf("Original message: %s\n", message);
+
+                                       /* copy the message to text_1   */
+                                       /* the hard way                 */
+     i=0;
+     while ( (text_1[i] = message[i]) != '\0' )
+                i++;
+     printf("Text_1: %s\n", text_1);
+
+                                       /* use explicit pointer arithmetic */
+     ta=message;
+     tb=text_2;
+     while ( ( *tb++ = *ta++ ) != '\0' ) 
+                               ;
+     printf("Text_2: %s\n", text_2);
+ 
+}
+<hr>
+</pre>
+ 
+The standard ``string'' library contains many useful functions to
+manipulate strings; a description of this library can be found in an
+appendix of the K &amp; R textbook. Some of the most useful functions
+are:
+ 
+<pre>char *strcpy(s,ct)     -&gt; copy  ct into s, including ``\0''; return s
+char *strncpy(s,ct,n)  -&gt; copy ncharcater of ct into s, return s
+char *strncat(s,ct)    -&gt; concatenate ct to end of s; return s
+char *strncat(s,ct,n)  -&gt; concatenate n character of ct to end
+                           of s, terminate with ``\0''; return s
+int strcmp(cs,ct)      -&gt; compare cs and ct; return 0 if cs=ct,
+                             &lt;0 if cs<ct and="">0 if cs&gt;ct 
+char *strchr(cs,c)     -&gt; return pointer to first occurence of c
+                            in cs or NULL if not encountered
+size_t strlen(cs)      -&gt; return length of cs
+</ct></pre>
+ 
+(<kbd>s</kbd> and <kbd>t</kbd> are <kbd>char*</kbd>, <kbd>cs</kbd> and
+<kbd>ct</kbd> are <kbd>const char*</kbd>, <kbd>c</kbd> is an
+<kbd>char</kbd> converted to type <kbd>int</kbd>, and <kbd>n</kbd> is
+an <kbd>int</kbd>.)
+
+<p> Consider the following code which uses some of these functions:
+ 
+</p><pre><hr>
+#include &lt; string.h&gt;
+ 
+void main()
+{
+     char line[100], *sub_text;
+					/* initialize string */ 
+     strcpy(line,"hello, I am a string;");
+     printf("Line: %s\n", line);
+					/* add to end of string */ 
+     strcat(line," what are you?");
+     printf("Line: %s\n", line);
+					/* find length of string */ 
+ 					/* strlen brings back    */
+					/* length as type size_t */
+
+     printf("Length of line: %d\n", (int)strlen(line));
+
+					/* find occurence of substrings */ 
+     if ( (sub_text = strchr ( line, 'W' ) )!= NULL )
+            printf("String starting with \"W\" -&gt;%s\n", sub_text);
+ 
+     if ( ( sub_text = strchr ( line, 'w' ) )!= NULL )
+            printf("String starting with \"w\" -&gt;%s\n", sub_text);
+ 
+     if ( ( sub_text = strchr ( sub_text, 'u' ) )!= NULL )
+            printf("String starting with \"w\" -&gt;%s\n", sub_text);
+ 
+}
+<hr>
+</pre>
+ 
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="io">9. I/O Capabilities </a></h2>
+
+<h3> Character level I/O </h3>
+
+C provides (through its libraries) a variety of I/O routines. At the
+character level, <kbd>getchar()</kbd> reads one character at a time
+from <kbd>stdin</kbd>, while <kbd>putchar()</kbd> writes one character
+at a time to <kbd>stdout</kbd>. For example, consider
+
+<pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    int i, nc;
+	
+    nc = 0;
+    i = getchar();
+    while (i != EOF) {
+	nc = nc + 1;
+	i = getchar();
+    }
+    printf("Number of characters in file = %d\n", nc);
+}
+<hr>
+</pre>
+
+This program counts the number of characters in the input stream
+(e.g. in a file piped into it at execution time). The code reads
+characters (whatever they may be) from <kbd>stdin</kbd> (the
+keyboard), uses <kbd>stdout</kbd> (the X-terminal you run from) for
+output, and writes error messages to <kbd>stderr</kbd> (usually also
+your X-terminal). These streams are always defined at run time. EOF is
+a special return value, defined in <kbd>stdio.h</kbd>, returned by
+<kbd>getchar()</kbd> when it encounters an <em>end-of-file</em> marker
+when reading. Its value is computer dependent, but the C compiler
+hides this fact from the user by defining the variable EOF.  Thus the
+program reads characters from <kbd>stdin</kbd> and keeps adding to the
+counter <kbd>nc</kbd>, until it encounters the ``end of file''.
+
+<p>
+An experienced C programmer would probably code this example as:
+
+</p><pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    int c, nc = 0;
+
+    while ( (c = getchar()) != EOF ) nc++;
+
+    printf("Number of characters in file = %d\n", nc);
+}
+<hr>
+</pre>
+C allows great brevity of expression, usually at the expense of
+readability!
+
+<p> The <kbd>()</kbd> in the statement <kbd>(c = getchar())</kbd> says
+to execute the call to <kbd>getchar()</kbd> and assign the result to
+<kbd>c</kbd> before comparing it to EOF; the brackets are necessary
+here. Recall that <kbd>nc++</kbd> (and, in fact, also <kbd>++nc</kbd>)
+is another way of writing <kbd>nc = nc + 1</kbd>. (The difference
+between the prefix and postfix notation is that in <kbd>++nc</kbd>,
+<kbd>nc</kbd> is incremented before it is used, while in
+<kbd>nc++</kbd>, <kbd>nc</kbd> is used before it is incremented. In
+this particular example, either would do.)  This notation is more
+compact (not always an advantage, mind you), and it is often more
+efficiently coded by the compiler.</p><p>
+
+The UNIX command <kbd>wc</kbd> counts the characters, words and lines
+in a file. The program above can be considered as your own
+<kbd>wc</kbd>. Let's  add a counter for the lines.
+
+</p><pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    int c, nc = 0, nl = 0;
+
+    while ( (c = getchar()) != EOF )
+    {
+	nc++;
+	if (c == '\n') nl++;
+    }
+
+    printf("Number of characters = %d, number of lines = %d\n",
+	   nc, nl);
+}
+<hr>
+</pre>
+
+Can you think of a way to count the number of words in the file?
+
+
+<h3> Higher-Level I/O capabilities </h3>
+
+We have already seen that <kbd>printf</kbd> handles formatted output
+to <kbd>stdout</kbd>. The counterpart statement for reading from
+<kbd>stdin</kbd> is <kbd>scanf</kbd>. The syntax
+
+<pre>	scanf("format string", variables); 
+</pre>
+
+resembles that of <kbd>printf</kbd>. The format string may contain
+blanks or tabs (ignored), ordinary ASCII characters, which must match
+those in <kbd>stdin</kbd>, and conversion specifications as in
+<kbd>printf</kbd>.
+
+<p> Equivalent statements exist to read from or write to character
+strings. They are:
+
+</p><pre>    sprintf(string, "format string", variables);
+    scanf(string, "format string", variables);
+</pre>
+
+The ``string'' argument is the name of (i.e. a pointer to) the
+character array into which you want to write the information.
+
+
+<h3> I/O to and from files </h3>
+
+Similar statements also exist for handling I/O to and from files. The
+statements are
+
+<pre>
+#include &lt; stdio.h&gt;
+
+    FILE *fp;
+										
+    fp = fopen(name, mode);
+	
+    fscanf(fp, "format string", variable list);
+    fprintf(fp, "format string", variable list);
+
+    fclose(fp );
+</pre>
+
+The logic here is that the code must 
+
+<ul>
+	<li> define a local ``pointer'' of type <kbd>FILE</kbd> (note that
+		the uppercase is necessary here), which is defined in
+		&lt; stdio.h&gt;<stdio.h>
+	</stdio.h></li><li> ``open'' the file and associate it with the local pointer via
+		<kbd>fopen</kbd>
+	</li><li> perform the I/O operations using <kbd>fscanf</kbd> and 
+		<kbd>fprintf</kbd>
+	</li><li> disconnect the file from the task with <kbd>fclose</kbd>
+</li></ul>
+
+The ``mode'' argument in the <kbd>fopen</kbd> specifies the
+purpose/positioning in opening the file: ``<kbd>r</kbd>'' for reading,
+``<kbd>w</kbd>'' for writing, and ``<kbd>a</kbd>'' for appending to
+the file. Try the following:
+
+<pre><hr>
+#include &lt; stdio.h&gt;
+
+void main()
+{
+    FILE *fp;
+    int i;
+
+    fp = fopen("foo.dat", "w");        /* open foo.dat for writing */
+
+    fprintf(fp, "\nSample Code\n\n");  /* write some info */
+    for (i = 1; i &lt;= 10 ; i++)
+	fprintf(fp, "i = %d\n", i);
+
+    fclose(fp);			       /* close the file  */
+}
+<hr>
+</pre>
+
+Compile and run this code; then use any editor to read the file
+<kbd>foo.dat</kbd>.
+
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="functions">10. Functions </a></h2>
+
+Functions are easy to use; they allow complicated programs to be
+parcelled up into small blocks, each of which is easier to write,
+read, and maintain.  We have already encountered the function
+<kbd>main</kbd> and made use of I/O and mathematical routines from the
+standard libraries.  Now let's look at some other library functions,
+and how to write and use our own.
+
+
+<h3> Calling a Function </h3>
+
+The call to a function in C simply entails referencing its name with
+the appropriate arguments. The C compiler checks for compatibility
+between the arguments in the calling sequence and the definition of
+the function.
+
+<p> Library functions are generally not available to us in source
+form.  Argument type checking is accomplished through the use of
+header files (like <kbd>stdio.h</kbd>) which contain all the necessary
+information.  For example, as we saw earlier, in order to use the
+standard mathematical library you must include <kbd>math.h</kbd> via
+the statement
+
+</p><pre>#include &lt; math.h&gt;
+</pre>
+
+at the top of the file containing your code. The most commonly used
+header files are
+
+<pre>&lt; stdio.h&gt;  -&gt; defining I/O routines
+&lt; ctype.h&gt;  -&gt; defining character manipulation routines
+&lt; string.h&gt; -&gt; defining string manipulation routines
+&lt; math.h&gt;   -&gt; defining mathematical routines
+&lt; stdlib.h&gt; -&gt; defining number conversion, storage allocation 
+              	and similar tasks
+&lt; stdarg.h&gt; -&gt; defining libraries to handle routines with variable 
+              	numbers of arguments
+&lt; time.h&gt;   -&gt; defining time-manipulation routines
+</pre>
+
+In addition, the following header files exist:
+
+<pre>&lt; assert.h&gt; -&gt; defining diagnostic routines
+&lt; setjmp.h&gt; -&gt; defining non-local function calls
+&lt; signal.h&gt; -&gt; defining signal handlers
+&lt; limits.h&gt; -&gt; defining constants of the int type
+&lt; float.h&gt;  -&gt; defining constants of the float type
+</pre>
+
+Appendix B in the K &amp; R book describes these libraries in great
+detail.
+
+<h3> <a name="userfunctions"> Writing Your Own Functions </a></h3><a name="userfunctions">
+
+A function has the following layout:
+
+<pre>return-type function-name ( argument-list-if-necessary )
+{
+    ...local-declarations...
+
+    ...statements...
+
+    return return-value;
+}
+</pre>
+
+If <kbd>return-type</kbd> is omitted, C defaults to
+<kbd>int</kbd>. The <kbd>return-value</kbd> must be of the declared
+type.
+
+<p> A function may simply perform a task without returning any value,
+in which case it has the following layout:
+
+</p><pre>void function-name ( argument-list-if-necessary )
+{
+    ...local-declarations...
+
+    ...statements...
+}
+</pre>
+
+<p>
+As an example of function calls, consider the following code:
+
+</p><pre><hr>
+			/* include headers of library */
+			/* defined for all routines   */
+			/* in the file                */
+#include &lt; stdio.h&gt;
+#include &lt; string.h&gt;
+			/* prototyping of functions   */
+			/* to allow type checks by    */
+			/* the compiler               */
+
+void main()
+{
+    int  n;
+    char string[50];
+			/* strcpy(a,b) copies string b into a */
+			/* defined via the stdio.h header     */
+    strcpy(string, "Hello World");
+
+			/* call own function */
+    n = n_char(string);	
+    printf("Length of string = %d\n", n);	
+}
+
+			/* definition of local function n_char */
+int n_char(char string[])
+{
+			/* local variable in this function   */
+    int n;
+			/* strlen(a) returns the length of   */
+			/* string a                          */
+			/* defined via the string.h header   */
+    n = strlen(string);
+    if (n &gt; 50) 
+	printf("String is longer than 50 characters\n");
+
+			/* return the value of integer n  */
+    return n;
+}
+<hr>
+</pre>
+
+
+<p> Arguments are always passed <em>by value</em> in C function
+calls. This means that local ``copies'' of the values of the arguments
+are passed to the routines.  Any change made to the arguments
+internally in the function are made only to the local copies of the
+arguments. In order to change (or define) an argument in the argument
+list, this argument must be passed as an address, thereby forcing C to
+change the ``real'' argument in the calling routine.
+
+</p><p> As an example, consider exchanging two numbers between
+variables. First let's illustrate what happen if the variables are
+passed by value:
+
+</p><pre><hr>
+
+#include &lt; stdio.h&gt;
+
+void exchange(int a, int b);
+
+void main()
+{			/* WRONG CODE */
+    int a, b;
+
+    a = 5;
+    b = 7;
+    printf("From main: a = %d, b = %d\n", a, b);
+
+    exchange(a, b);
+    printf("Back in main: ");
+    printf("a = %d, b = %d\n", a, b);
+}
+
+void exchange(int a, int b)
+{
+    int temp;
+
+    temp = a;
+    a = b;
+    b = temp;
+    printf(" From function exchange: ");
+    printf("a = %d, b = %d\n", a, b);
+}
+<hr>
+</pre>
+
+Run this code and observe that <kbd>a</kbd> and <kbd>b</kbd> are NOT
+exchanged! Only the copies of the arguments are exchanged. The RIGHT
+way to do this is of course to use pointers:
+
+<pre><hr>
+
+#include &lt; stdio.h&gt;
+
+void exchange ( int *a, int *b );
+
+void main()
+{			/* RIGHT CODE */
+    int a, b;
+
+    a = 5;
+    b = 7;
+    printf("From main: a = %d, b = %d\n", a, b);
+
+    exchange(&amp;a, &amp;b);
+    printf("Back in main: ");
+    printf("a = %d, b = %d\n", a, b);
+}
+
+void exchange ( int *a, int *b )
+{
+    int temp;
+
+    temp = *a;
+    *a = *b;
+    *b = temp;
+    printf(" From function exchange: ");
+    printf("a = %d, b = %d\n", *a, *b);
+}
+<hr>
+</pre>
+The rule of thumb here is that 
+<ul>
+	<li> You use regular variables if the function does
+	     not change the values of those arguments<p>
+	</p></li><li> You MUST use pointers if the function
+	     changes the values of those arguments
+</li></ul>
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p></a><h2><a name="userfunctions"> </a><a name="command-line">11. Command-line arguments</a></h2>
+
+It is standard practice in UNIX for information to be passed from the
+command line directly into a program through the use of one or more
+command-line arguments, or <em>switches</em>.  Switches are typically
+used to modify the behavior of a program, or to set the values of some
+internal parameters. You have already encountered several of
+these--for example, the <kbd>"ls"</kbd> command lists the files in
+your current directory, but when the switch <kbd>-l</kbd> is added,
+<kbd>"ls -l"</kbd> produces a so-called ``long'' listing instead.
+Similarly, <kbd>"ls -l -a"</kbd> produces a long listing, including
+``hidden'' files, the command <kbd>"tail -20"</kbd> prints out the
+last 20 lines of a file (instead of the default 10), and so on.<p>
+
+Conceptually, switches behave very much like arguments to functions
+within C, and they are passed to a C program from the operating system
+in precisely the same way as arguments are passed between functions.
+Up to now, the <kbd>main()</kbd> statements in our programs have had
+nothing between the parentheses.  However, UNIX actually makes
+available to the program (whether the programmer chooses to use the
+information or not) two arguments to <kbd>main</kbd>: an <em>array of
+character strings</em>, conventionally called <kbd>argv</kbd>, and an
+<em>integer</em>, usually called <kbd>argc</kbd>, which specifies the
+number of strings in that array.  The full statement of the first line
+of the program is
+
+</p><pre>    main(int argc, char** argv)
+</pre>
+
+(The syntax <kbd>char** argv</kbd> declares argv to be a pointer to a
+pointer to a character, that is, a pointer to a character array (a
+character string)--in other words, an array of character strings. You
+could also write this as <kbd>char* argv[]</kbd>. Don't worry too much
+about the details of the syntax, however--the use of the array will be
+made clearer below.)<p>
+
+When you run a program, the array <kbd>argv</kbd> contains, in order,
+<em>all</em> the information on the command line when you entered the
+command (strings are delineated by whitespace), <em>including the
+command itself</em>.  The integer <kbd>argc</kbd> gives the total
+number of strings, and is therefore equal to equal to the number of
+arguments <em>plus one</em>. For example, if you typed
+
+</p><pre>	a.out -i 2 -g -x 3 4
+</pre>
+
+the program would receive
+
+<pre>	argc = 7
+	argv[0] = "a.out"
+	argv[1] = "-i"
+	argv[2] = "2"
+	argv[3] = "-g"
+	argv[4] = "-x"
+	argv[5] = "3"
+	argv[6] = "4"
+</pre>
+
+Note that the arguments, even the numeric ones, are all
+<em>strings</em> at this point.  It is the programmer's job to decode
+them and decide what to do with them.<p>
+
+The following program simply prints out its own name and arguments:
+
+</p><pre>#include &lt; stdio.h&gt;
+
+main(int argc, char** argv)
+{
+    int i;
+
+    printf("argc = %d\n", argc);
+
+    for (i = 0; i &lt; argc; i++)
+	printf("argv[%d] = \"%s\"\n", i, argv[i]);
+}
+</pre>
+
+UNIX programmers have certain conventions about how to interpret the
+argument list.  They are by no means mandatory, but it will make your
+program easier for others to use and understand if you stick to them.
+First, switches and key terms are always preceded by a ``-''
+character.  This makes them easy to recognize as you loop through the
+argument list.  Then, depending on the switch, the next arguments may
+contain information to be interpreted as integers, floats, or just
+kept as character strings.  With these conventions, the most common
+way to ``parse'' the argument list is with a <kbd>for</kbd> loop and a
+<kbd>switch</kbd> statement, as follows:
+
+<pre>#include &lt; stdio.h&gt;
+#include &lt; stdlib.h&gt;
+
+main(int argc, char** argv)
+{
+    /* Set defaults for all parameters: */
+
+    int a_value = 0;
+    float b_value = 0.0;
+    char* c_value = NULL;
+    int d1_value = 0, d2_value = 0;
+
+    int i;
+
+    /* Start at i = 1 to skip the command name. */
+
+    for (i = 1; i &lt; argc; i++) {
+
+	/* Check for a switch (leading "-"). */
+
+	if (argv[i][0] == '-') {
+
+	    /* Use the next character to decide what to do. */
+
+	    switch (argv[i][1]) {
+
+		case 'a':	a_value = atoi(argv[++i]);
+				break;
+
+		case 'b':	b_value = atof(argv[++i]);
+				break;
+
+		case 'c':	c_value = argv[++i];
+				break;
+
+		case 'd':	d1_value = atoi(argv[++i]);
+		                d2_value = atoi(argv[++i]);
+				break;
+
+	    }
+	}
+    }
+
+    printf("a = %d\n", a_value);
+    printf("b = %f\n", b_value);
+    if (c_value != NULL) printf("c = \"%s\"\n", c_value);
+    printf("d1 = %d, d2 = %d\n", d1_value, d2_value);
+}
+</pre>
+
+Note that <kbd>argv[i][j]</kbd> means the <kbd>j</kbd>-th character of
+the <kbd>i</kbd>-th character string. The <kbd>if</kbd> statement
+checks for a leading ``-'' (character 0), then the <kbd>switch</kbd>
+statement allows various courses of action to be taken depending on
+the next character in the string (character 1 here).  Note the use of
+<kbd>argv[++i]</kbd> to increase <kbd>i</kbd> before use, allowing us
+to access the next string in a single compact statement.  The
+functions <kbd>atoi</kbd> and <kbd>atof</kbd> are defined in
+<kbd>stdlib.h</kbd>.  They convert from character strings to
+<kbd>ints</kbd> and <kbd>doubles</kbd>, respectively.<p>
+
+A typical command line might be:
+
+</p><pre>	a.out -a 3 -b 5.6 -c "I am a string" -d 222 111
+</pre>
+
+(The use of double quotes with <kbd>-c</kbd> here makes sure that the
+shell treats the entire string, including the spaces, as a single
+object.)<p>
+
+Arbitrarily complex command lines can be handled in this way.
+Finally, here's a simple program showing how to place parsing
+statements in a separate function whose purpose is to interpret the
+command line and set the values of its arguments:
+
+</p><pre>
+
+			/********************************/
+			/*                        	*/
+			/*   Getting arguments from    	*/
+			/*				*/
+			/*      the Command Line        */
+			/*				*/
+			/********************************/
+
+
+					/* Steve McMillan 	*/
+					/* Written: Winter 1995	*/
+
+
+#include &lt; stdio.h&gt;
+#include &lt; stdlib.h&gt;
+
+void get_args(int argc, char** argv, int* a_value, float* b_value)
+{
+    int i;
+
+    /* Start at i = 1 to skip the command name. */
+
+    for (i = 1; i &lt; argc; i++) {
+
+	/* Check for a switch (leading "-"). */
+
+	if (argv[i][0] == '-') {
+
+	    /* Use the next character to decide what to do. */
+
+	    switch (argv[i][1]) {
+
+		case 'a':	*a_value = atoi(argv[++i]);
+				break;
+
+		case 'b':	*b_value = atof(argv[++i]);
+				break;
+
+		default:	fprintf(stderr,
+				"Unknown switch %s\n", argv[i]);
+	    }
+	}
+    }
+}
+
+main(int argc, char** argv)
+{
+    /* Set defaults for all parameters: */
+
+    int a = 0;
+    float b = 0.0;
+
+    get_args(argc, argv, &amp;a, &amp;b);
+
+    printf("a = %d\n", a);
+    printf("b = %f\n", b);
+}
+
+</pre>
+
+<p><br></p><hr size="10" width="75%"><p><br>
+
+</p><h2> <a name="dialog-box">12. Graphical Interfaces: Dialog Boxes</a></h2>
+
+Suppose you don't want to deal with command line interpretation, but
+you still want your program to be able to change the values of certain
+variables in an interactive way.  You could simply program in a series
+<kbd>printf/scanf</kbd> lines to quiz the user about their
+preferences:
+
+<p>
+</p><pre>	.
+	.
+	.
+	printf("Please enter the value of n: ");
+	scanf("%d", &amp;n);
+
+	printf("Please enter the value of x: ");
+	scanf("%f", &amp;x);
+
+	.
+	.
+	.
+
+</pre>
+<p>
+
+and so on, but this won't work well if your program is to be used as
+part of a pipeline (see the <a href="https://www.physics.drexel.edu/~valliere/General/UNIX/unix.html">UNIX</a>
+primer), for example using ther graphics program <a href="https://www.physics.drexel.edu/~valliere/General/Graphics/basic_graphics.html#plot_data"><kbd>plot_data</kbd></a>,
+since the questions and answers will get mixed up with the data
+stream.
+
+</p><p> A convenient alternative is to use a simple graphical interface
+which generates a <em>dialog box</em>, offering you the option of
+varying key parameters in your program.  Our graphics package provides
+a number of easy-to-use tools for constructing and using such boxes.
+The simplest way to set the integer variable <kbd>n</kbd> and the
+float variable <kbd>x</kbd> (i.e. to perform the same effect as the
+above lines of code) using a dialog box is as follows:
+
+</p><pre>/* Simple program to illustrate use of a dialog box */
+	
+main()
+{
+    /* Define default values: */
+
+    int n = 0;
+    float x = 0.0;
+
+    /* Define contents of dialog window */
+
+    create_int_dialog_entry("n", &amp;n);
+    create_float_dialog_entry("x", &amp;x);
+
+    /* Create window with name "Setup" and top-left corner at (0,0) */
+
+    set_up_dialog("Setup", 0, 0);
+
+    /* Display the window and read the results */
+
+    read_dialog_window();
+
+    /* Print out the new values */
+
+    printf("n = %d, x = %f\n", n, x);
+}
+</pre>
+
+Compile this program using the alias <kbd>Cgfx</kbd> (see the page on
+<a href="https://www.physics.drexel.edu/~valliere/General/C_basics/compile.html">compilation</a>) to link in all necessary
+libraries.
+
+<p>The two <kbd>create</kbd> lines define the entries in the box and
+the variables to be associated with them, <kbd>set_up_dialog</kbd>
+names the box and defines its location.  Finally,
+<kbd>read_dialog_window</kbd> pops up a window and allows you to
+change the values of the variables.  When the program runs, you will
+see a box that looks something like this:
+
+</p><p>
+</p><center><img src="https://www.physics.drexel.edu/~valliere/General/C_basics/dialog.gif"></center>
+<p>
+
+Modify the numbers shown, click "OK" (or just hit carriage return),
+and the changes are made.  That's all there is to it!  The great
+advantage of this approach is that it operates <em>independently</em>
+of the flow of data through <kbd>stdin/stdout</kbd>.  In principle,
+you could even control the operation of every stage in a pipeline of
+many chained commands, using a separate dialog box for each.
+
+
+</p></div></body></html>
