@@ -84,8 +84,8 @@ double matmul (const int M, double **a, double **b, double **c)
 				for (k = 0; k < row; k++){
 					c[i][j] += a[i][k] * b[k][j]; //00 = 00*00 + 01*10  01 = 00*01 + 01*11
 					mflops++ ;
-			}
-		}
+		        	}
+	          	}
                 
 
 		
