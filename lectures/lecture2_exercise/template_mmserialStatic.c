@@ -7,7 +7,7 @@
 const int test_sizes[] = {
   31, 32, 96, 97, 127, 128, 129, 191, 192, 229,
   255, 256, 257, 319, 320, 321, 417, 479, 480, 511, 512, 639, 640,
-  767, 768, 769};.
+  767, 768, 769};
 #define N_SIZES (sizeof (test_sizes) / sizeof (int))
 static double matmul (const int M,  double a[][ORDER], double b[][ORDER], double c[][ORDER]);
 
@@ -40,13 +40,31 @@ double mflop_s;
 double matmul (const int M, double a[][ORDER], double b[][ORDER], double c[][ORDER])
 {
 	struct timespec start, finish;
-	double mflops, mflop_s;
+	double mflops, mflop_s,secs;
 	
 	/*...Code needs to be added...*/
 
 		get_time (&start); 
 		
 		/*...Code needs to be added...*/
+		int i, j, k, row, col;
+		row = sizeof(a) / sizeof(a[0]);
+		col = sizeof(a[0]) / sizeof(a[0][0]);
+		mflops = 0;
+
+
+		// 1 2 * 4 3  = (1*4 + 2*2) +(1*3 +2*4) +(2*4+1*2)+(2*3+1*4) 
+		// 2 1   2 4
+
+		for (i = 0; i<row; i++) {           //matrix product 
+			for (j = 0; j < col; j++)
+			{
+				c[i][j] = 0;
+				for (k = 0; k < row; k++) {
+					c[i][j] += a[i][k] * b[k][j]; //00 = 00*00 + 01*10  01 = 00*01 + 01*11
+					mflops++;
+				}
+			}
 		
 		}
 		get_time (&finish); 
@@ -54,6 +72,7 @@ double matmul (const int M, double a[][ORDER], double b[][ORDER], double c[][ORD
 		secs = timespec_diff (start, finish);
 		
 		/*...Code needs to be added...*/
-	}
+		mflop_s = mflops / secs;
+	
 	return mflop_s;
 }

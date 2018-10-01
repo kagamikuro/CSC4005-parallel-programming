@@ -7,7 +7,7 @@
 const int test_sizes[] = {
   31, 32, 96, 97, 127, 128, 129, 191, 192, 229,
   255, 256, 257, 319, 320, 321, 417, 479, 480, 511, 512, 639, 640,
-  767, 768, 769};
+  767, 768, 769,7776};
 #define N_SIZES (sizeof (test_sizes) / sizeof (int))
 static double matmul (const int M, double **a, double **b, double **c);
 
@@ -68,10 +68,10 @@ double matmul (const int M, double **a, double **b, double **c)
         /*...Code needs to be added...*/
 
 
-        	int i,j,k,row,col;
+        int i,j,k,row,col;
 		row = sizeof(a)/sizeof(a[0]);
 		col = sizeof(a[0])/sizeof(a[0][0]); 
-                mflops = 0; 
+        mflops = 0; 
 
 
 // 1 2 * 4 3  = (1*4 + 2*2) +(1*3 +2*4) +(2*4+1*2)+(2*3+1*4) 
