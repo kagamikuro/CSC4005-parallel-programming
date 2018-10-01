@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Execute job from current working directory
+#$ -cwd
+
+# Gives the name for output of execution 
+#$ -o programoutput.$JOB_ID
+
+# Prints date
+date
+
+gcc -o <outputname> <filename.c> timing.c -lrt
+
+ulimit -s
+
+./<outputname>
+
